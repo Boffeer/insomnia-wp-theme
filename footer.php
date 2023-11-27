@@ -19,51 +19,104 @@
     $logo = THEME_OPTIONS['logo'];
 ?>
 
-<footer class="footer">
-    <div class="container footer__container">
-        <a href="#" class="footer__logo logo">
-            <!-- <img src="./img/common/logo-header.svg" alt="" class="logo__img"> -->
-            carrent
-        </a>
+<div class="fixed-widget-list">
+    <div class="fixed-widget">
+        <div class="socials fixed-widget__socials">
 
-        <div class="footer__links">
-            <div class="socials footer__socials">
-                <?php foreach ($socials as $social) : ?>
-                    <a class="socials__link socials__link--<?php echo $social['key']; ?>" aria-label="<?php echo isset($social['text']) ? $social['text'] : ''; ?>"
-                       href="<?php echo $social['href']; ?>" target="_blank" rel="noopener noreferrer"
-                    >
-                        <img class="socials__icon" src="<?php echo $social['icon']; ?>" alt="<?php echo isset($social['text']) ? $social['text'] : ''; ?>">
-                    </a>
-                <?php endforeach; ?>
-            </div>
+            <a class="socials__link socials__link--telegram" aria-label="TG"
+               href="https://t.me" target="_blank" rel="noopener noreferrer"
+            >
+                <svg class="socials__icon">
+                    <use href="./img/common.insm/telegram.svg#telegram"></use>
+                </svg>
+            </a>
 
-            <ul class="footer__links-list">
-                <li class="footer__links-item">
-                    <a href="#" class="link footer__links-link">Политика конфиденциальности</a>
-                </li>
-                <li class="footer__links-item">
-                    <a href="#" class="link footer__links-link">Договор оферты</a>
-                </li>
-            </ul>
+            <a class="socials__link socials__link--whatsapp" aria-label="WA"
+               href="https://wa.me" target="_blank" rel="noopener noreferrer"
+            >
+                <svg class="socials__icon">
+                    <use href="./img/common.insm/whatsapp.svg#whatsapp"></use>
+                </svg>
+            </a>
+
+            <a class="socials__link socials__link--instagram" aria-label="IG"
+               href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+            >
+                <svg class="socials__icon">
+                    <use href="./img/common.insm/instagram.svg#instagram"></use>
+                </svg>
+            </a>
+
+            <a class="socials__link socials__link--tel" aria-label="tel"
+               href="tel:+711111111" target="_blank" rel="noopener noreferrer"
+            >
+                <svg class="socials__icon">
+                    <use href="./img/common.insm/tel.svg#tel"></use>
+                </svg>
+            </a>
+
         </div>
 
+    </div>
+    <div class="fixed-widget fixed-widget--right fixed-widget-phone">
+        <a href="tel:+790000000" class="fixed-widget__text">+7 900 00 00 00</a>
+    </div>
+</div>
+</div>
 
-        <div class="footer__contact">
-            <a href="#" class="footer__phone">
-                <span class="footer__phone-caption">Связаться с нами:</span>
-                <span class="footer__phone-text">+7 (495) 968-32-27</span>
-                <span class="footer__phone-caption">09:00 - 22:00 Мск</span>
-            </a>
-            <a href="#" class="footer__location">
-                <svg class="footer__location-icon">
-                    <use xlink:href="./img/common.crrt/icon-geo.svg#icon-geo" />
-                </svg>
-                <span class="footer__location-address">109316, Мадейра, ул. За ухо, 25</span>
-            </a>
+<article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
+    <div class="modal-news__media">
+        <picture class="modal-news__media-pic">
+            <img class="modal-news__media-img" src="./img/single-news.insm/news-cover.jpg" alt="">
+        </picture>
+    </div>
+    <div class="modal-news__body">
+        <h3 class="modal-news__title">Summer contest 2023</h3>
+        <div class="modal-news__content wysiwyg">
+            <p>
+                Вейкбординг является экстремальным видом спорта, который стал очень популярным в России за последние несколько лет. Соревнования по этому виду спорта проводятся на специальных водных трассах, оборудованных подъемными механизмами - катером и тросом. Участники соревнований должны проехать по трассе и выполнить различные трюки на вейкборде.
+            </p>
         </div>
     </div>
-</footer>
-</div>
+    <div class="modal-news__buttons">
+        <a href="#" class="modal-news__button modal-news__button-prev">
+            <svg class="modal-news__button-icon">
+                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+        <a href="#" class="modal-news__button modal-news__button-next">
+            <svg class="modal-news__button-icon">
+                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+    </div>
+</article>
+<article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
+    <div class="modal-trainer__media">
+        <picture class="modal-trainer__media-pic">
+            <img class="modal-trainer__media-img" src="./img/training.insm/trainer-full.jpg" alt="">
+        </picture>
+    </div>
+    <div class="modal-trainer__body">
+        <h3 class="modal-trainer__title">Иванов Александр Иванович</h3>
+        <div class="modal-trainer__content wysiwyg">
+            <p>Картельные сговоры не допускают ситуации, при которой явные признаки победы институционализации, вне зависимости от их уровня, должны быть представлены в исключительно положительном свете. С другой стороны, перспективное планирование не даёт нам иного выбора, кроме определения приоретизации разума над.</p>
+        </div>
+    </div>
+    <div class="modal-trainer__buttons">
+        <a href="#" class="modal-trainer__button modal-trainer__button-prev">
+            <svg class="modal-trainer__button-icon">
+                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+        <a href="#" class="modal-trainer__button modal-trainer__button-next">
+            <svg class="modal-trainer__button-icon">
+                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+    </div>
+</article>
+
 
 <?php wp_footer(); ?>
 

@@ -1,10 +1,10 @@
 <?php
 /**
- * crrt functions and definitions
+ * bh functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package crrt
+ * @package bh
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function crrt_setup() {
+function bh_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on crrt, use a find and replace
-		* to change 'crrt' to the name of your theme in all the template files.
+		* If you're building a theme based on bh, use a find and replace
+		* to change 'bh' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'crrt', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'bh', get_template_directory() . '/languages' );
 
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
@@ -35,7 +35,7 @@ function crrt_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'nav-burger' => esc_html__( 'Меню в бургере', 'crrt' ),
+			'nav-burger' => esc_html__( 'Меню в бургере', 'bh' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function crrt_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'crrt_setup' );
+add_action( 'after_setup_theme', 'bh_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -83,26 +83,26 @@ add_action( 'after_setup_theme', 'crrt_setup' );
  *
  * @global int $content_width
  */
-function crrt_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'crrt_content_width', 640 );
+function bh_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'bh_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'crrt_content_width', 0 );
+add_action( 'after_setup_theme', 'bh_content_width', 0 );
 
 /**
  * Enqueue scripts and styles.
  */
-function crrt_scripts() {
-	wp_enqueue_style( 'crrt-style', get_template_directory_uri() . '/static/dist/css/style.css', array(), _S_VERSION );
+function bh_scripts() {
+	wp_enqueue_style( 'bh-style', get_template_directory_uri() . '/static/dist/css/style.css', array(), _S_VERSION );
 
-	wp_enqueue_script( 'crrt-scripts', get_template_directory_uri() . '/static/dist/js/index.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bh-scripts', get_template_directory_uri() . '/static/dist/js/index.min.js', array(), _S_VERSION, true );
 
     $data = array(
         'url' => admin_url( 'admin-ajax.php' ),
         'static' => get_template_directory_uri() . '/static/dist',
     );
-    wp_add_inline_script( 'crrt-scripts', 'window.m_ajax = ' . wp_json_encode( $data ), 'before' );
+    wp_add_inline_script( 'bh-scripts', 'window.m_ajax = ' . wp_json_encode( $data ), 'before' );
 }
-add_action( 'wp_enqueue_scripts', 'crrt_scripts' );
+add_action( 'wp_enqueue_scripts', 'bh_scripts' );
 
 /**
  * Customizer additions.
@@ -115,22 +115,22 @@ require get_template_directory() . '/inc/merlin/merlin-functions.php';
 /*
 	Post types
  */
-require THEME_INC . '/custom-types/cars-post-type.php';
+//require THEME_INC . '/custom-types/cars-post-type.php';
 //require THEME_INC . '/custom-types/reviews-post-type.php';
 //require THEME_INC . '/custom-types/team-post-type.php';
 
 /*
 	Pages meta
  */
-require THEME_INC . '/pages-meta/homepage-meta.php';
+//require THEME_INC . '/pages-meta/homepage-meta.php';
 
 /*
 function reviews_posts_navigation() {
     $prev_link = get_previous_posts_link( 'Свежие отзывы' );
     $next_link = get_next_posts_link( 'Ранние отзывы' );
 
-    $arrow_left = '<svg class="button__icon button__icon-left"> <use href="' . THEME_STATIC . '/img/crrt_common/arrow-left.svg#arrow-left"/> </svg>';
-    $arrow_right = '<svg class="button__icon button__icon-right"> <use href="' . THEME_STATIC . '/img/crrt_common/arrow-right.svg#arrow-right"/> </svg>';
+    $arrow_left = '<svg class="button__icon button__icon-left"> <use href="' . THEME_STATIC . '/img/bh_common/arrow-left.svg#arrow-left"/> </svg>';
+    $arrow_right = '<svg class="button__icon button__icon-right"> <use href="' . THEME_STATIC . '/img/bh_common/arrow-right.svg#arrow-right"/> </svg>';
 
 
     if ( $prev_link || $next_link ) {
