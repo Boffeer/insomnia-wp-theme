@@ -124,6 +124,11 @@ require THEME_INC . '/custom-types/events-post-type.php';
 	Pages meta
  */
 require THEME_INC . '/pages-meta/homepage-meta.php';
+require THEME_INC . '/pages-meta/about-meta.php';
+require THEME_INC . '/pages-meta/menu-meta.php';
+
+
+require THEME_INC . '/insm/functions.php';
 
 /*
 function reviews_posts_navigation() {
