@@ -14,60 +14,54 @@
 
 <?php
 //    $phones = explode_textarea(THEME_OPTIONS['phones']);
-    $socials = get_socials(THEME_OPTIONS['socials']);
+//    $socials = get_socials(THEME_OPTIONS['socials']);
 //    $email = THEME_OPTIONS['emails'];
-    $logo = THEME_OPTIONS['logo'];
+//    $logo = THEME_OPTIONS['logo'];
+$socials = get_socials(THEME_OPTIONS['socials']);
 ?>
 
 <div class="fixed-widget-list">
     <div class="fixed-widget">
         <div class="socials fixed-widget__socials">
 
-            <a class="socials__link socials__link--telegram" aria-label="TG"
-               href="https://t.me" target="_blank" rel="noopener noreferrer"
-            >
-                <svg class="socials__icon">
-                    <use href="./img/common.insm/telegram.svg#telegram"></use>
-                </svg>
-            </a>
+            <?php foreach ($socials as $social) : ?>
+                <a class="socials__link socials__link--<?php echo $social['key']?>"
+                   aria-label="<?php //echo $social['text']; ?>"
+                   href="<?php echo $social['href']; ?>"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                >
+                    <svg class="socials__icon">
+                        <use href="<?php echo $social['icon']; ?>#<?php echo $social['key']; ?>"></use>
+                    </svg>
+                </a>
+            <?php endforeach; ?>
 
-            <a class="socials__link socials__link--whatsapp" aria-label="WA"
-               href="https://wa.me" target="_blank" rel="noopener noreferrer"
-            >
-                <svg class="socials__icon">
-                    <use href="./img/common.insm/whatsapp.svg#whatsapp"></use>
-                </svg>
-            </a>
-
-            <a class="socials__link socials__link--instagram" aria-label="IG"
-               href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-            >
-                <svg class="socials__icon">
-                    <use href="./img/common.insm/instagram.svg#instagram"></use>
-                </svg>
-            </a>
-
+            <?php $phone = explode_textarea(THEME_OPTIONS['phones'])[0]; ?>
+            <?php if (!empty($phone)) : ?>
             <a class="socials__link socials__link--tel" aria-label="tel"
-               href="tel:+711111111" target="_blank" rel="noopener noreferrer"
+               href="<?php echo phone_to_href($phone); ?>"
             >
                 <svg class="socials__icon">
-                    <use href="./img/common.insm/tel.svg#tel"></use>
+                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/tel.svg#tel"></use>
                 </svg>
             </a>
-
+            <?php endif; ?>
         </div>
 
     </div>
+    <?php if (!empty($phone)) : ?>
     <div class="fixed-widget fixed-widget--right fixed-widget-phone">
-        <a href="tel:+790000000" class="fixed-widget__text">+7 900 00 00 00</a>
+        <a href="<?php echo phone_to_href($phone); ?>" class="fixed-widget__text"><?php echo $phone; ?></a>
     </div>
+    <?php endif; ?>
 </div>
 </div>
 
 <article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
     <div class="modal-news__media">
         <picture class="modal-news__media-pic">
-            <img class="modal-news__media-img" src="./img/single-news.insm/news-cover.jpg" alt="">
+            <img class="modal-news__media-img" src="<?php echo THEME_STATIC; ?>/img/single-news.insm/news-cover.jpg" alt="">
         </picture>
     </div>
     <div class="modal-news__body">
@@ -81,12 +75,12 @@
     <div class="modal-news__buttons">
         <a href="#" class="modal-news__button modal-news__button-prev">
             <svg class="modal-news__button-icon">
-                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
         </a>
         <a href="#" class="modal-news__button modal-news__button-next">
             <svg class="modal-news__button-icon">
-                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
         </a>
     </div>
@@ -94,7 +88,7 @@
 <article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
     <div class="modal-trainer__media">
         <picture class="modal-trainer__media-pic">
-            <img class="modal-trainer__media-img" src="./img/training.insm/trainer-full.jpg" alt="">
+            <img class="modal-trainer__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer-full.jpg" alt="">
         </picture>
     </div>
     <div class="modal-trainer__body">
@@ -106,12 +100,12 @@
     <div class="modal-trainer__buttons">
         <a href="#" class="modal-trainer__button modal-trainer__button-prev">
             <svg class="modal-trainer__button-icon">
-                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
         </a>
         <a href="#" class="modal-trainer__button modal-trainer__button-next">
             <svg class="modal-trainer__button-icon">
-                <use href="./img/common.insm/angle-right.svg#angle-right"></use>
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
         </a>
     </div>

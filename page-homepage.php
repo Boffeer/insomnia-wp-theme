@@ -17,8 +17,8 @@ get_header();
 
 
 <?php
-$socials = get_socials(THEME_OPTIONS['socials']);
-$phones = explode_textarea(THEME_OPTIONS['phones']);
+//$socials = get_socials(THEME_OPTIONS['socials']);
+//$phones = explode_textarea(THEME_OPTIONS['phones']);
 ?>
 
 
@@ -27,10 +27,10 @@ $phones = explode_textarea(THEME_OPTIONS['phones']);
         <section class="screener__layout page-home" id="home">
             <div class="hero screener__content container">
                 <div class="hero__card">
-                    <div class="hero__card-bg js_use-bg" data-use-bg="./img/common.insm/board.svg"></div>
+                    <div class="hero__card-bg js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/common.insm/board.svg"></div>
                     <div class="hero__card-logo">
                         <picture class="hero__card-logo-pic">
-                            <img class="hero__card-logo-img" src="./img/common.insm/full-logo.svg" alt="">
+                            <img class="hero__card-logo-img" src="<?php echo THEME_STATIC; ?>/img/common.insm/full-logo.svg" alt="">
                         </picture>
                     </div>
                 </div>
@@ -40,35 +40,25 @@ $phones = explode_textarea(THEME_OPTIONS['phones']);
                 </span>
                     <span class="blob-button__bg"></span>
                 </a>
+                <?php
+                    $news = get_field('field_home_news');
+                ?>
                 <ul class="hero__bullet-list">
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
-                    <li class="hero__bullet">
-                        <a href="" class="hero__bullet-link">2 Реверсивные лебедки</a>
-                    </li>
+                    <?php foreach ($news as $article) : ?>
+                        <li class="hero__bullet">
+                            <a href="<?php echo the_permalink($article->ID)?>" class="hero__bullet-link"><?php echo $article->post_title; ?></a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div class="screener__bg">
             </div>
             <div class="screener__particles-upper">
-                <div class="blob js_use-bg" data-use-bg="./img/hero.insm/blob-2.svg"></div>
-                <div class="blob js_use-bg" data-use-bg="./img/hero.insm/blob-3.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/hero.insm/blob-2.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/hero.insm/blob-3.svg"></div>
             </div>
             <div class="screener__particles-bottom">
-                <div class="blob js_use-bg" data-use-bg="./img/hero.insm/blob-1.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/hero.insm/blob-1.svg"></div>
             </div>
         </section>
     </div>

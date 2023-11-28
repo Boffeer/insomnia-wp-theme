@@ -68,7 +68,8 @@ endif;
 
 if ( !function_exists('get_page_og') ) :
 	function get_page_og() {
-		$og = carbon_get_theme_option('default_og_img');
+		//$og = carbon_get_theme_option('default_og_img');
+        $og = '';
 
 		if (is_single()) {
 			$og = get_post_thumb(get_the_ID());

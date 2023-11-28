@@ -11,21 +11,47 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 	}
 endif;
 
+	/*
 if (!function_exists('get_theme_options')) {
-	function get_theme_options()
-	{
-		return array(
+    function get_theme_options()
+    {
+        return array(
             'logo' => carbon_get_theme_option('logo_text'),
             'loader' => carbon_get_theme_option('loader'),
-			'phones' => carbon_get_theme_option('phones'),
-			'phone_href' => phone_to_href(carbon_get_theme_option('phone')),
-			'og_default' => carbon_get_theme_option('default_og_img'),
-			'socials' => carbon_get_theme_option('socials'),
+            'phones' => carbon_get_theme_option('phones'),
+            'phone_href' => phone_to_href(carbon_get_theme_option('phone')),
+            'og_default' => carbon_get_theme_option('default_og_img'),
+            'socials' => carbon_get_theme_option('socials'),
             'address' => carbon_get_theme_option('address'),
             'work_time' => carbon_get_theme_option('work_time'),
             'currency' => carbon_get_theme_option('currency'),
-		);
-	}
+        );
+    }
+}
+	*/
+add_action('acf/init', 'init_theme_options');
+function init_theme_options() {
+    if (!function_exists('get_theme_options')) {
+        function get_theme_options()
+        {
+            return array(
+                'header_logo' => get_field('header_logo', 'option'),
+                'hero_logo' => get_field('hero_logo', 'option'),
+                'book_url' => get_field('book_url', 'option'),
+    //            'loader' => get_field('loader'),
+    			'phones' => get_field('phones', 'option'),
+    //			'phone_href' => phone_to_href(get_field('phone')),
+    //			'og_default' => get_field('default_og_img'),
+                'socials' => get_field('socials', 'option'),
+                'address' => get_field('address', 'option'),
+                'coordinates' => get_field('coordinates', 'option'),
+    //            'work_time' => get_field('work_time'),
+            );
+        }
+    }
+    if (!defined('THEME_OPTIONS')) {
+        define('THEME_OPTIONS', get_theme_options());
+    }
 }
 
 if (!function_exists('get_home_link')) {
@@ -293,86 +319,88 @@ if ( !function_exists('get_menu_location')) {
 }
 if (!function_exists('get_socials')) {
   function get_socials($socials_textarea) {
-    $img_path = '/img/sklh_common/';
+    $img_path = '/img/common.insm/';
+//    $icon_prefix = 'icon-';
+    $icon_prefix = '';
     $socials_config = array(
       'vimeo' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?vimeo\.com\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-vimeo.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'vimeo.svg',
         'text' => 'Наш Vimeo',
       ),
       'artstation' => array(
           'pattern' => '/^(?:https?:\/\/)?(?:www\.)?artstation\.com\/[a-zA-Z0-9_-]+(?:\/)?$/',
-          'icon' => THEME_STATIC . $img_path .'icon-artstation.svg',
+          'icon' => THEME_STATIC . $img_path .$icon_prefix . 'artstation.svg',
           'text' => 'Наш Artstation',
       ),
       'linkedin' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?linkedin\.com\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-linkedin.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'linkedin.svg',
           'text' => 'Наш Linkedin',
       ),
-      'wa' => array(
+      'whatsapp' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?(m\.)?wa\.me\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-wa.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'whatsapp.svg',
           'text' => 'Наш Whatsapp',
       ),
       'vk' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?(m\.)?vk\.com\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-vk.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'vk.svg',
           'text' => 'Наш VK',
       ),
       'twitter' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?twitter\.com\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-twitter.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'twitter.svg',
           'text' => 'Наш Twitter',
       ),
       'email' => array(
         'pattern' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
-        'icon' => THEME_STATIC . $img_path . 'icon-email.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'email.svg',
           'text' => 'Наш Email',
       ),
       'behance' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?behance\.(net|com)\/.*/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-behance.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'behance.svg',
           'text' => 'Наш Behance',
       ),
       'instagram' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?instagram\.com\/.+$/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-instagram.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'instagram.svg',
           'text' => 'Наш Instagram',
       ),
       'imdb' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?imdb\.com\/.+/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-imdb.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'imdb.svg',
           'text' => 'Наш imdb',
       ),
       'telegram' => array(
-        'pattern' => '/^(https?:\/\/)?(www\.)?t\.me\/.+$/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-telegram.svg',
+        'pattern' => '/^(https?:\/\/)?(www\.)?t\.me/i',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'telegram.svg',
           'text' => 'Наш Telegram',
       ),
       'youtube' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?(youtube|youtu)\.(com|be)\/.+$/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-youtube.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'youtube.svg',
           'text' => 'Наш Youtube',
       ),
       'facebook' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?(facebook|fb)\.com\/.+$/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-facebook.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'facebook.svg',
           'text' => 'Наш Facebook',
       ),
       'discord' => array(
         'pattern' => '/^(https?:\/\/)?(www\.)?discord\.com\/.+$/i',
-        'icon' => THEME_STATIC . $img_path . 'icon-discord.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'discord.svg',
           'text' => 'Наш Discord',
       ),
       'globe' => array(
         'pattern' => '/.*/',
-        'icon' => THEME_STATIC . $img_path . 'icon-globe.svg',
+        'icon' => THEME_STATIC . $img_path . $icon_prefix . 'globe.svg',
           'text' => '',
       ),
     );
 
-    $globe_icon = THEME_STATIC . $img_path . 'icon-globe.svg';
+    $globe_icon = THEME_STATIC . $img_path . $icon_prefix . 'globe.svg';
 
     $socials = explode_textarea($socials_textarea);
 
@@ -387,6 +415,7 @@ if (!function_exists('get_socials')) {
         $socials[$key] = array(
             'href' => $array[0],
             'icon' => $array[1],
+            'key' => $key,
         );
           continue;
       }
@@ -396,6 +425,7 @@ if (!function_exists('get_socials')) {
           $socials[$key] = array(
               'href' => $link,
               'icon' => $social['icon'],
+              'key' => $social_key,
           );
           break;
         } else {
@@ -403,6 +433,7 @@ if (!function_exists('get_socials')) {
             'href' => $link,
             'icon' => $globe_icon,
             'text' => $social['text'],
+              'key' => 'link',
           );
           continue;
         }

@@ -117,12 +117,13 @@ require get_template_directory() . '/inc/merlin/merlin-functions.php';
  */
 //require THEME_INC . '/custom-types/cars-post-type.php';
 //require THEME_INC . '/custom-types/reviews-post-type.php';
-//require THEME_INC . '/custom-types/team-post-type.php';
+require THEME_INC . '/custom-types/news-post-type.php';
+require THEME_INC . '/custom-types/events-post-type.php';
 
 /*
 	Pages meta
  */
-//require THEME_INC . '/pages-meta/homepage-meta.php';
+require THEME_INC . '/pages-meta/homepage-meta.php';
 
 /*
 function reviews_posts_navigation() {
