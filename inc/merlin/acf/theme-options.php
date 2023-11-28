@@ -15,7 +15,7 @@ if (function_exists('acf_add_options_page')) {
 
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
-        'key' => 'group_123456789',
+        'key' => 'group_branding',
         'title' => 'Branding',
         'fields' => array(
             array(
@@ -23,18 +23,21 @@ if (function_exists('acf_add_local_field_group')) {
                 'label' => 'Header logo',
                 'name' => 'header_logo',
                 'type' => 'image',
+                'return_format' => 'id',
             ),
             array(
                 'key' => 'hero_logo',
                 'label' => 'Hero logo',
                 'name' => 'hero_logo',
                 'type' => 'image',
+                'return_format' => 'id',
             ),
             array(
                 'key' => 'default_og_img',
                 'label' => 'Default socials image',
                 'name' => 'default_og_img',
                 'type' => 'image',
+                'return_format' => 'id',
             ),
         ),
         'location' => array(

@@ -23,15 +23,13 @@
 
 <div class="wrapper">
 
-    <?php
-//        $logo = THEME_OPTIONS['logo'];
-    ?>
-
     <header class="header">
         <div class="container header__container">
             <?php $header_logo = THEME_OPTIONS['header_logo'];
             if (empty($header_logo)) {
                 $header_logo = THEME_STATIC . '/img/common.insm/logo.svg';
+            } else {
+                $header_logo = get_image_url_by_id($header_logo);
             }
             ?>
             <a href="/" class="header__logo logo">
@@ -40,28 +38,15 @@
 
             <div class="header__menu menu">
                 <nav class="menu__nav container">
+                    <?php $menu = get_menu_location('nav-burger'); ?>
                     <ul class="menu__nav-links">
-                        <li class="menu__nav-item menu__nav-item--active">
-                            <a href="#" class="menu__nav-link">О парке</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">Цены</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">Ивенты</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">Меню</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">События</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">Тренинг</a>
-                        </li>
-                        <li class="menu__nav-item">
-                            <a href="#" class="menu__nav-link">Карта</a>
-                        </li>
+                        <?php foreach ($menu as $menu_item) : ?>
+                            <li class="menu__nav-item menu__nav-item--active">
+                                <a href="<?php echo $menu_item['href']; ?>" class="menu__nav-link">
+                                    <?php echo $menu_item['title']; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </nav>
             </div>

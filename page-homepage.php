@@ -16,30 +16,35 @@ get_header();
 ?>
 
 
-<?php
-//$socials = get_socials(THEME_OPTIONS['socials']);
-//$phones = explode_textarea(THEME_OPTIONS['phones']);
-?>
-
-
-
     <div class="screener">
         <section class="screener__layout page-home" id="home">
             <div class="hero screener__content container">
                 <div class="hero__card">
                     <div class="hero__card-bg js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/common.insm/board.svg"></div>
                     <div class="hero__card-logo">
+                        <?php $hero_logo = THEME_OPTIONS['hero_logo']; ?>
+                        <?php
+                            if (empty($hero_logo)) {
+                                $hero_logo = THEME_STATIC . '/img/common.insm/full-logo.svg';
+                            } else {
+                                $hero_logo = get_image_url_by_id($hero_logo);
+                            }
+                        ?>
                         <picture class="hero__card-logo-pic">
-                            <img class="hero__card-logo-img" src="<?php echo THEME_STATIC; ?>/img/common.insm/full-logo.svg" alt="">
+                            <img class="hero__card-logo-img" src="<?php echo $hero_logo; ?>" alt="">
                         </picture>
                     </div>
                 </div>
-                <a href="#" class="hero__button blob-button">
-                <span class="blob-button__play">
-                  <span class="blob-button__text"></span>
-                </span>
-                    <span class="blob-button__bg"></span>
-                </a>
+
+                <?php $home_video_url = get_field('home_video_url'); ?>
+                <?php if (!empty($home_video_url)) : ?>
+                    <a href="<?php echo $home_video_url; ?>" class="hero__button blob-button">
+                    <span class="blob-button__play">
+                      <span class="blob-button__text"></span>
+                    </span>
+                        <span class="blob-button__bg"></span>
+                    </a>
+                <?php endif; ?>
                 <?php
                     $news = get_field('field_home_news');
                 ?>

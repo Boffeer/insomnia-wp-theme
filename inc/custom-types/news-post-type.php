@@ -51,6 +51,7 @@ function register_news_fields() {
                 'label' => 'Галерея', // Заголовок поля
                 'name' => 'gallery', // Имя поля
                 'type' => 'gallery', // Тип поля галереи
+                'return_format' => 'id',
             ),
         ),
         'location' => array(
