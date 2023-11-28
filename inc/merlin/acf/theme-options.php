@@ -79,14 +79,18 @@ if (function_exists('acf_add_local_field_group')) {
                 'label' => 'Address',
                 'name' => 'address',
                 'type' => 'textarea',
-                'new_lines' => 'br',
             ),
             array(
                 'key' => 'field_coordinates',
                 'label' => 'Coordinates',
                 'name' => 'coordinates',
                 'type' => 'textarea',
-//                'new_lines' => 'br',
+            ),
+            array(
+                'key' => 'field_iframe_url',
+                'label' => 'Ссылка на айфрейм с картой',
+                'name' => 'map_iframe_url',
+                'type' => 'textarea',
             ),
         ),
         'location' => array(

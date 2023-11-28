@@ -45,7 +45,7 @@ function init_theme_options() {
                 'socials' => get_field('socials', 'option'),
                 'address' => get_field('address', 'option'),
                 'coordinates' => get_field('coordinates', 'option'),
-    //            'work_time' => get_field('work_time'),
+                'map_iframe_url' => get_field('map_iframe_url', 'option'),
             );
         }
     }
