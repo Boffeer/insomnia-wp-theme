@@ -8,7 +8,7 @@
                 <h1 class="screener__title"><?php the_title(); ?></h1>
             </div>
             <div class="screener__body">
-                <div class="single-article single-article--reverse">
+                <div class="single-article">
                     <?php $about_gallery = get_field('about_gallery'); ?>
                     <?php if (!empty($about_gallery)) : ?>
                         <div class="single-article-carousel">
@@ -38,7 +38,7 @@
                     <div class="single-article__body">
                         <?php $about_subtitle = get_field('about_subtitle'); ?>
                         <?php if (!empty($about_subtitle)) : ?>
-                            <h2 class="single-article__title single-article__title--big"><?php echo typograph($about_subtitle); ?></h2>
+                            <h2 class="single-article__title"><?php echo typograph($about_subtitle); ?></h2>
                         <?php endif; ?>
                         <div class="single-article__content wysiwyg">
                             <?php the_content(); ?>
@@ -81,8 +81,8 @@
             <div class="screener__particles-upper">
             </div>
             <div class="screener__particles-bottom">
-                <div class="blob js_use-bg" data-use-bg="./img/about.insm/blob-1.svg"></div>
-                <div class="blob js_use-bg" data-use-bg="./img/about.insm/blob-2.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/about.insm/blob-1.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/about.insm/blob-2.svg"></div>
             </div>
         </div>
     </section>

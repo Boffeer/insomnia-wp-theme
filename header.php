@@ -21,7 +21,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div class="wrapper">
+<div class="wrapper" data-barba="wrapper">
 
     <header class="header">
         <div class="container header__container">
@@ -41,7 +41,7 @@
                     <?php $menu = get_menu_location('nav-burger'); ?>
                     <ul class="menu__nav-links">
                         <?php foreach ($menu as $menu_item) : ?>
-                            <li class="menu__nav-item menu__nav-item--active">
+                            <li class="menu__nav-item">
                                 <a href="<?php echo $menu_item['href']; ?>" class="menu__nav-link">
                                     <?php echo $menu_item['title']; ?>
                                 </a>
@@ -59,30 +59,29 @@
 
             <?php $book_url = THEME_OPTIONS['book_url']; ?>
             <?php if (!empty($book_url)) : ?>
-                <a href="<?php echo $book_url; ?>"
-                                                      class="header-button__book round-button"
-                                                      target="_blank"
-                                                      rel="noopener noreferrer"
-                                                      aria-label="Забронировть сейчас"
-                                                      >
-                                                      <svg class="round-button__text" viewbox="0 0 100 100">
-                                                      <path  d="M 10,50
-                                                      a 30,30 0 1,1 80,0
-                                                      a 30,30 0 1,1 -80,0"
-                                                      id="curve"/>
-                                                      <text x="1" fill="currentColor">
-                                                      <textpath xlink:href="#curve" spacing="exact">
-                                                      Забронировать &nbsp; сейчас
-                                                      <!-- &nbsp;Забронировать&nbsp; &nbsp; сейчас -->
-                                                      </textpath>
-                                                      </text>
-                                                      </svg>
-                                                      <svg class="round-button__icon">
-                                                      <use href="<?php echo THEME_STATIC; ?>/img/common.insm/lock.svg#lock"></use>
-                                                      </svg>
-                                                      </a>
+            <a href="<?php echo $book_url; ?>"
+                  class="header-button__book round-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Забронировть сейчас"
+            >
+                  <svg class="round-button__text" viewbox="0 0 100 100">
+                      <path  d="M 10,50
+                      a 30,30 0 1,1 80,0
+                      a 30,30 0 1,1 -80,0"
+                      id="curve"/>
+                      <text x="1" fill="currentColor">
+                          <textpath xlink:href="#curve" spacing="exact">
+                              Забронировать &nbsp; сейчас
+                          </textpath>
+                      </text>
+                  </svg>
+                  <svg class="round-button__icon">
+                      <use href="<?php echo THEME_STATIC; ?>/img/common.insm/lock.svg#lock"></use>
+                  </svg>
+            </a>
             <?php endif; ?>
         </div>
     </header>
 
-    <main class="main">
+    <main class="main" data-barba="container" data-barba-namespace="clip">
