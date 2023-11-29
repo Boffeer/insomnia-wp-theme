@@ -126,6 +126,8 @@ require THEME_INC . '/custom-types/events-post-type.php';
 require THEME_INC . '/pages-meta/homepage-meta.php';
 require THEME_INC . '/pages-meta/about-meta.php';
 require THEME_INC . '/pages-meta/menu-meta.php';
+require THEME_INC . '/pages-meta/training-meta.php';
+require THEME_INC . '/pages-meta/prices-meta.php';
 
 
 require THEME_INC . '/insm/functions.php';
