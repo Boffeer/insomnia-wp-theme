@@ -30,7 +30,7 @@ function register_events_post_types() {
 		'menu_position'       => null,
 		'menu_icon'           => 'dashicons-star-filled',
 		'hierarchical'        => false,
-		'supports'            => [ 'title', 'editor' ],
+		'supports'            => [ 'title', 'editor', 'excerpt' ],
 		'taxonomies'          => [],
 		'has_archive'         => true,
 		'rewrite'             => true,
@@ -40,14 +40,63 @@ function register_events_post_types() {
 
 function register_events_fields() {
     acf_add_local_field_group(array(
-        'key' => 'group_gallery', // Уникальный ключ группы полей
-        'title' => 'Галерея', // Заголовок группы полей
+        'key' => 'group_events_gallery', // Уникальный ключ группы полей
+        'title' => 'Ивент', // Заголовок группы полей
         'fields' => array(
             array(
-                'key' => 'gallery_field', // Уникальный ключ поля
+                'key' => 'events_subtitle',
+                'label' => 'Подзаголовок',
+                'name' => 'events_subtitle',
+                'type' => 'textarea',
+            ),
+            array(
+                'key' => 'events_gallery', // Уникальный ключ поля
                 'label' => 'Галерея', // Заголовок поля
-                'name' => 'gallery', // Имя поля
+                'name' => 'events_gallery', // Имя поля
                 'type' => 'gallery', // Тип поля галереи
+                'return_format' => 'id',
+            ),
+            array(
+                'key' => 'events_icon',
+                'label' => 'Иконка у заголовка',
+                'name' => 'events_icon',
+                'type' => 'image',
+                'return_format' => 'id',
+            ),
+            array(
+                'key' => 'events_buttons',
+                'label' => 'Кнопки',
+                'name' => 'events_buttons',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_file',
+                        'label' => 'Файл для загрузки',
+                        'name' => 'file',
+                        'type' => 'file',
+                    ),
+                    array(
+                        'key' => 'field_url',
+                        'label' => 'Ссылка',
+                        'name' => 'url',
+                        'type' => 'text',
+                        'instructions' => 'Если заполнено, то кнпока будет не скачивать, а открывать ссылку',
+                    ),
+                    array(
+                        'key' => 'field_text',
+                        'label' => 'Текст ссылки',
+                        'name' => 'text',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_icon',
+                        'label' => 'Иконка',
+                        'name' => 'icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'instructions' => 'Необязательно, если в тексте в Текст ссылки написано Bar или Menu',
+                    ),
+                ),
             ),
         ),
         'location' => array(

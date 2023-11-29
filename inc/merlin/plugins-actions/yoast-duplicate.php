@@ -6,9 +6,8 @@ if ( ! defined( 'ABSPATH') ) {
 if (!function_exists('getPostsToDuplicate')) :
 function getPostsToDuplicate() {
     return array(
-        'team',
-        'reviews',
-        'portfolio',
+        'news',
+        'events',
     );
 }
 endif;
@@ -26,17 +25,8 @@ function disable_yoast_seo_for_custom_posts() {
     global $post_type;
 
     $types_to_disable_yoast = array(
-      'faq',
-      'soft',
-      'reviews',
-      'portfolio',
-      'courses',
-      'resume',
-      'teachers',
-      'professions',
-      'studios',
-      'jobs',
-      'blog',
+      'news',
+      'events',
     );
 
     if ( in_array($post_type, $types_to_disable_yoast) ) {
