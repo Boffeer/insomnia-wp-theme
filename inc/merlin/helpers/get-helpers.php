@@ -445,3 +445,25 @@ if (!function_exists('get_socials')) {
     return $socials;
   }
 }
+
+if (!function_exists('getAdjacentIndexes')) {
+    function getAdjacentIndexes($array, $index) {
+        $length = count($array);
+
+        // Обработка случая, когда массив пустой
+        if ($length === 0) {
+            return null;
+        }
+
+        // Получение предыдущего индекса
+        $prevIndex = ($index - 1 < 0) ? $length - 1 : $index - 1;
+
+        // Получение следующего индекса
+        $nextIndex = ($index + 1 >= $length) ? 0 : $index + 1;
+
+        return [
+            'prev' => $prevIndex,
+            'next' => $nextIndex,
+        ];
+    }
+}

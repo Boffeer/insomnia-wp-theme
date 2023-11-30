@@ -103,13 +103,12 @@
 <article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
     <div class="modal-trainer__media">
         <picture class="modal-trainer__media-pic">
-            <img class="modal-trainer__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer-full.jpg" alt="">
+            <img class="modal-trainer__media-img" src="" alt="">
         </picture>
     </div>
     <div class="modal-trainer__body">
-        <h3 class="modal-trainer__title">Иванов Александр Иванович</h3>
+        <h3 class="modal-trainer__title"></h3>
         <div class="modal-trainer__content wysiwyg">
-            <p>Картельные сговоры не допускают ситуации, при которой явные признаки победы институционализации, вне зависимости от их уровня, должны быть представлены в исключительно положительном свете. С другой стороны, перспективное планирование не даёт нам иного выбора, кроме определения приоретизации разума над.</p>
         </div>
     </div>
     <div class="modal-trainer__buttons">

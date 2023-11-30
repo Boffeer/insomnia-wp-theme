@@ -7,148 +7,55 @@
     <section class="training screener__layout" id="training">
         <div class="screener__content screener__container">
             <div class="screener__header">
-                <h1 class="screener__title">Тренинг</h1>
+                <h1 class="screener__title"><?php the_title(); ?></h1>
             </div>
             <div class="screener__body training__body">
                 <div class="training-carousel">
                     <div class="swiper training-carousel__swiper">
                         <div class="swiper-wrapper">
-
+                            <?php $mentors = get_field('training_mentors'); ?>
+                            <?php foreach ($mentors as $key => $mentor) : ?>
                             <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
+                                <article class="trainer-card" data-id="<?php echo $key; ?>">
                                     <div class="trainer-card__media">
                                         <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
+                                            <img class="trainer-card__media-img"
+                                                 src="<?php echo get_image_url_by_id($mentor['photo']); ?>"
+                                                 alt="<?php echo $mentor['name']; ?>"
+                                            >
                                         </picture>
                                     </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
+                                    <h3 class="trainer-card__name"><?php echo typograph($mentor['name']); ?></h3>
+                                    <p class="trainer-card__desc"><?php echo typograph($mentor['excerpt']); ?></p>
                                 </article>
                             </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide training-carousel__slide">
-                                <article class="trainer-card">
-                                    <div class="trainer-card__media">
-                                        <picture class="trainer-card__media-pic">
-                                            <img class="trainer-card__media-img" src="<?php echo THEME_STATIC; ?>/img/training.insm/trainer.jpg" alt="">
-                                        </picture>
-                                    </div>
-                                    <h3 class="trainer-card__name">Иванов Александр иванович</h3>
-                                    <p class="trainer-card__desc">VIP инструктор  1-ой категории</p>
-                                </article>
-                            </div>
-
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="training-carousel__pagination swiper-pagination"></div>
                 </div>
                 <div class="training__content">
-                    <h2 class="training__title">Курсы по вейкбордингу</h2>
-                    <div class="training__course-card">
-                        <h3 class="training__course-card-title">«Старт с нуля»  30 минут</h3>
-                        <p class="training__course-card-desc">
-                            Курс для новичков, мы познакомим вас этим видом спорта и поставим на доску! Обучение проходит в формате: 10 минут инструктаж на берегу, 20 минут в воде. Связь по Bluetooth гарнитуре с тренером. <br>
-                            Прокат оборудования включен.
-                        </p>
-                        <div class="training__course-card-plan-list">
-                            <div class="training__course-card-plan">
-                                <p class="training__course-card-plan-name">Будний день</p>
-                                <p class="training__course-card-plan-price">1500₽</p>
-                            </div>
-                            <div class="training__course-card-plan">
-                                <p class="training__course-card-plan-name">Выходной</p>
-                                <p class="training__course-card-plan-price">2000₽</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="training__course-card">
-                        <h3 class="training__course-card-title">«Путь воды»  30 минут</h3>
-                        <p class="training__course-card-desc">
-                            Курс для тех, кто хочет освоить базовые трюки и научиться новым техникам. Обучение проходит по Bluetooth гарнитуре с тренером. Прокат оборудования включен.
-                        </p>
-                        <div class="training__course-card-plan-list">
-                            <div class="training__course-card-plan">
-                                <p class="training__course-card-plan-name">Будний день</p>
-                                <p class="training__course-card-plan-price">2300₽</p>
-                            </div>
-                            <div class="training__course-card-plan">
-                                <p class="training__course-card-plan-name">Выходной</p>
-                                <p class="training__course-card-plan-price">3000₽</p>
+                    <h2 class="training__title"><?php the_field('training_subtitle'); ?></h2>
+                    <?php
+                        $courses_id = 17;
+                        $courses = get_field('prices_courses', $courses_id);
+                    ?>
+                    <?php foreach ($courses as $course) : ?>
+                        <div class="training__course-card">
+                            <h3 class="training__course-card-title"><?php echo typograph($course['prices_courses_title'])?></h3>
+                            <p class="training__course-card-desc"><?php echo typograph($course['prices_courses_desc']); ?></p>
+                            <div class="training__course-card-plan-list">
+                                <div class="training__course-card-plan">
+                                    <p class="training__course-card-plan-name">Будний день</p>
+                                    <p class="training__course-card-plan-price"><?php echo $course['prices_courses_cost']; ?></p>
+                                </div>
+                                <div class="training__course-card-plan">
+                                    <p class="training__course-card-plan-name">Выходной</p>
+                                    <p class="training__course-card-plan-price"><?php echo $course['prices_courses_cost_weekend']; ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

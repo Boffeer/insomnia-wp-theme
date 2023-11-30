@@ -32,3 +32,30 @@ if (!function_exists('get_single_buttons')) {
     <?php return ob_get_clean();
     }
 }
+
+add_action( 'wp_ajax_get_trainer', 'get_trainer' );
+add_action( 'wp_ajax_nopriv_get_trainer', 'get_trainer' );
+function get_trainer() {
+
+    $training_page_id = 25;
+
+    $id = $_POST['id'];
+
+    $mentors = get_field('training_mentors', $training_page_id);
+
+    $adjacentIds = getAdjacentIndexes($mentors, $id);
+
+    $single_mentor = array(
+        'name' => $mentors[$id]['name'],
+        'thumb' => get_image_url_by_id($mentors[$id]['photo']),
+        'content' => $mentors[$id]['content'],
+        'prev' => $adjacentIds['prev'],
+        'next' => $adjacentIds['next'],
+    );
+
+    echo json_encode(array(
+        'post' => $single_mentor,
+    ));
+
+    wp_die();
+}
