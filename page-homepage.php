@@ -38,7 +38,7 @@ get_header();
 
                 <?php $home_video_url = get_field('home_video_url'); ?>
                 <?php if (!empty($home_video_url)) : ?>
-                    <a href="<?php echo $home_video_url; ?>" class="hero__button blob-button">
+                    <a href="<?php echo $home_video_url; ?>" class="hero__button blob-button" data-fancybox>
                     <span class="blob-button__play">
                       <span class="blob-button__text"></span>
                     </span>
@@ -51,7 +51,13 @@ get_header();
                 <ul class="hero__bullet-list">
                     <?php foreach ($news as $article) : ?>
                         <li class="hero__bullet">
-                            <a href="<?php echo the_permalink($article->ID)?>" class="hero__bullet-link"><?php echo $article->post_title; ?></a>
+                            <a href="<?php echo the_permalink($article->ID)?>"
+                               class="hero__bullet-link"
+                               data-id="<?php echo $article->ID; ?>"
+                            >
+                                <?php echo $article->post_title; ?>
+                            </a>
+                            <?php /*<a href="<?php echo the_permalink($article->ID)?>" class="hero__bullet-link"><?php echo $article->post_title; ?></a> */ ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>

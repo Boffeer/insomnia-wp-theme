@@ -59,17 +59,17 @@ if (is_singular('news')) {
     $modal_content = get_the_content();
     $modal_thumb = get_post_thumb(get_the_ID());
 
-    $prev_post = get_previous_post();
-    $next_post = get_next_post();
+    $prev_post = get_previous_post()->ID;
+    $next_post = get_next_post()->ID;
 
     // Если пост первый, устанавливаем предыдущий пост как последний
     if (empty($prev_post)) {
-        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => 'news'))[0];
+        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => 'news'))[0]->ID;
     }
 
     // Если пост последний, устанавливаем следующий пост как первый
     if (empty($next_post)) {
-        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => 'news'))[0];
+        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => 'news'))[0]->ID;
     }
 } else {
     $modal_title = '';
@@ -92,12 +92,12 @@ if (is_singular('news')) {
         </div>
     </div>
     <div class="modal-news__buttons">
-        <a href="#" class="modal-news__button modal-news__button-prev" data-id="<?php echo $prev_post->ID; ?>">
+        <a href="#" class="modal-news__button modal-news__button-prev" data-id="<?php echo $prev_post; ?>">
             <svg class="modal-news__button-icon">
                 <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
         </a>
-        <a href="#" class="modal-news__button modal-news__button-next" data-id="<?php echo $next_post->ID; ?>">
+        <a href="#" class="modal-news__button modal-news__button-next" data-id="<?php echo $next_post; ?>">
             <svg class="modal-news__button-icon">
                 <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
             </svg>
