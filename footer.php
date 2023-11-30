@@ -12,13 +12,7 @@
 ?>
 </main>
 
-<?php
-//    $phones = explode_textarea(THEME_OPTIONS['phones']);
-//    $socials = get_socials(THEME_OPTIONS['socials']);
-//    $email = THEME_OPTIONS['emails'];
-//    $logo = THEME_OPTIONS['logo'];
-$socials = get_socials(THEME_OPTIONS['socials']);
-?>
+<?php $socials = get_socials(THEME_OPTIONS['socials']); ?>
 
 <div class="fixed-widget-list">
     <div class="fixed-widget">
@@ -58,33 +52,54 @@ $socials = get_socials(THEME_OPTIONS['socials']);
 </div>
 </div>
 
-<article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
-    <div class="modal-news__media">
-        <picture class="modal-news__media-pic">
-            <img class="modal-news__media-img" src="<?php echo THEME_STATIC; ?>/img/single-news.insm/news-cover.jpg" alt="">
-        </picture>
-    </div>
-    <div class="modal-news__body">
-        <h3 class="modal-news__title">Summer contest 2023</h3>
-        <div class="modal-news__content wysiwyg">
-            <p>
-                Вейкбординг является экстремальным видом спорта, который стал очень популярным в России за последние несколько лет. Соревнования по этому виду спорта проводятся на специальных водных трассах, оборудованных подъемными механизмами - катером и тросом. Участники соревнований должны проехать по трассе и выполнить различные трюки на вейкборде.
-            </p>
+
+    <?php
+        if (is_singular('news')) {
+            $modal_title = get_the_title();
+            $modal_content = get_the_content();
+            $modal_thumb = get_post_thumb(get_the_ID());
+        } else {
+            $modal_title = '';
+            $modal_content = '';
+            $modal_thumb = '';
+        }
+    ?>
+    <article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
+        <div class="modal-news__media <?php echo empty($modal_thumb) ? 'is-hidden' : ''; ?>">
+            <picture class="modal-news__media-pic">
+                <img class="modal-news__media-img" src="<?php echo $modal_thumb; ?>" alt="<?php echo $modal_title; ?>">
+            </picture>
         </div>
-    </div>
-    <div class="modal-news__buttons">
-        <a href="#" class="modal-news__button modal-news__button-prev">
-            <svg class="modal-news__button-icon">
-                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
-            </svg>
-        </a>
-        <a href="#" class="modal-news__button modal-news__button-next">
-            <svg class="modal-news__button-icon">
-                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
-            </svg>
-        </a>
-    </div>
-</article>
+        <div class="modal-news__body">
+            <h3 class="modal-news__title"><?php echo $modal_title; ?></h3>
+            <div class="modal-news__content wysiwyg">
+                <?php echo $modal_content; ?>
+            </div>
+        </div>
+        <div class="modal-news__buttons">
+            <a href="#" class="modal-news__button modal-news__button-prev">
+                <svg class="modal-news__button-icon">
+                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
+                </svg>
+            </a>
+            <a href="#" class="modal-news__button modal-news__button-next">
+                <svg class="modal-news__button-icon">
+                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
+                </svg>
+            </a>
+        </div>
+    </article>
+
+    <?php if (is_singular('news')) : ?>
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                setTimeout(() => {
+                  // b_modal.openPop('modal-news');
+                })
+            });
+        </script>
+    <?php endif; ?>
+
 <article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
     <div class="modal-trainer__media">
         <picture class="modal-trainer__media-pic">
