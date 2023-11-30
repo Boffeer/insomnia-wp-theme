@@ -33,74 +33,80 @@
 
             <?php $phone = explode_textarea(THEME_OPTIONS['phones'])[0]; ?>
             <?php if (!empty($phone)) : ?>
-            <a class="socials__link socials__link--tel" aria-label="tel"
-               href="<?php echo phone_to_href($phone); ?>"
-            >
-                <svg class="socials__icon">
-                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/tel.svg#tel"></use>
-                </svg>
-            </a>
+                <a class="socials__link socials__link--tel" aria-label="tel"
+                   href="<?php echo phone_to_href($phone); ?>"
+                >
+                    <svg class="socials__icon">
+                        <use href="<?php echo THEME_STATIC; ?>/img/common.insm/tel.svg#tel"></use>
+                    </svg>
+                </a>
             <?php endif; ?>
         </div>
 
     </div>
     <?php if (!empty($phone)) : ?>
-    <div class="fixed-widget fixed-widget--right fixed-widget-phone">
-        <a href="<?php echo phone_to_href($phone); ?>" class="fixed-widget__text"><?php echo $phone; ?></a>
+        <div class="fixed-widget fixed-widget--right fixed-widget-phone">
+            <a href="<?php echo phone_to_href($phone); ?>" class="fixed-widget__text"><?php echo $phone; ?></a>
+        </div>
+    <?php endif; ?>
+</div>
+</div>
+
+
+<?php
+if (is_singular('news')) {
+    $modal_title = get_the_title();
+    $modal_content = get_the_content();
+    $modal_thumb = get_post_thumb(get_the_ID());
+
+    $prev_post = get_previous_post();
+    $next_post = get_next_post();
+
+    // Если пост первый, устанавливаем предыдущий пост как последний
+    if (empty($prev_post)) {
+        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => 'news'))[0];
+    }
+
+    // Если пост последний, устанавливаем следующий пост как первый
+    if (empty($next_post)) {
+        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => 'news'))[0];
+    }
+} else {
+    $modal_title = '';
+    $modal_content = '';
+    $modal_thumb = '';
+    $next_post = '';
+    $prev_post = '';
+}
+?>
+<article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
+    <div class="modal-news__media <?php echo empty($modal_thumb) ? 'is-hidden' : ''; ?>">
+        <picture class="modal-news__media-pic">
+            <img class="modal-news__media-img" src="<?php echo $modal_thumb; ?>" alt="<?php echo $modal_title; ?>">
+        </picture>
     </div>
-    <?php endif; ?>
-</div>
-</div>
-
-
-    <?php
-        if (is_singular('news')) {
-            $modal_title = get_the_title();
-            $modal_content = get_the_content();
-            $modal_thumb = get_post_thumb(get_the_ID());
-        } else {
-            $modal_title = '';
-            $modal_content = '';
-            $modal_thumb = '';
-        }
-    ?>
-    <article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
-        <div class="modal-news__media <?php echo empty($modal_thumb) ? 'is-hidden' : ''; ?>">
-            <picture class="modal-news__media-pic">
-                <img class="modal-news__media-img" src="<?php echo $modal_thumb; ?>" alt="<?php echo $modal_title; ?>">
-            </picture>
+    <div class="modal-news__body">
+        <h3 class="modal-news__title"><?php echo $modal_title; ?></h3>
+        <div class="modal-news__content wysiwyg">
+            <?php echo $modal_content; ?>
         </div>
-        <div class="modal-news__body">
-            <h3 class="modal-news__title"><?php echo $modal_title; ?></h3>
-            <div class="modal-news__content wysiwyg">
-                <?php echo $modal_content; ?>
-            </div>
-        </div>
-        <div class="modal-news__buttons">
-            <a href="#" class="modal-news__button modal-news__button-prev">
-                <svg class="modal-news__button-icon">
-                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
-                </svg>
-            </a>
-            <a href="#" class="modal-news__button modal-news__button-next">
-                <svg class="modal-news__button-icon">
-                    <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
-                </svg>
-            </a>
-        </div>
-    </article>
-
-    <?php if (is_singular('news')) : ?>
-        <script>
-            window.addEventListener("DOMContentLoaded", (event) => {
-                setTimeout(() => {
-                  // b_modal.openPop('modal-news');
-                })
-            });
-        </script>
-    <?php endif; ?>
+    </div>
+    <div class="modal-news__buttons">
+        <a href="#" class="modal-news__button modal-news__button-prev" data-id="<?php echo $prev_post->ID; ?>">
+            <svg class="modal-news__button-icon">
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+        <a href="#" class="modal-news__button modal-news__button-next" data-id="<?php echo $next_post->ID; ?>">
+            <svg class="modal-news__button-icon">
+                <use href="<?php echo THEME_STATIC; ?>/img/common.insm/angle-right.svg#angle-right"></use>
+            </svg>
+        </a>
+    </div>
+</article>
 
 <article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
+
     <div class="modal-trainer__media">
         <picture class="modal-trainer__media-pic">
             <img class="modal-trainer__media-img" src="" alt="">
@@ -108,8 +114,7 @@
     </div>
     <div class="modal-trainer__body">
         <h3 class="modal-trainer__title"></h3>
-        <div class="modal-trainer__content wysiwyg">
-        </div>
+        <div class="modal-trainer__content wysiwyg"></div>
     </div>
     <div class="modal-trainer__buttons">
         <a href="#" class="modal-trainer__button modal-trainer__button-prev">

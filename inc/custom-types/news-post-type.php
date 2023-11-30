@@ -83,14 +83,36 @@ add_action( 'wp_ajax_get_modal_news', 'get_modal_news' );
 add_action( 'wp_ajax_nopriv_get_modal_news', 'get_modal_news' );
 function get_modal_news() {
 
-//    $review_feedback = carbon_get_post_meta($review_id, 'feedback');
+    global $post;
+    $oldGlobal = $post;
+
     $id = $_POST['id'];
+    $post = get_post( $id );
+
+    $prev_post = get_previous_post();
+    $next_post = get_next_post();
+    $post = $oldGlobal;
+
+    // Если пост первый, устанавливаем предыдущий пост как последний
+    if (empty($prev_post)) {
+        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => 'news'))[0];
+    }
+
+    // Если пост последний, устанавливаем следующий пост как первый
+    if (empty($next_post)) {
+        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => 'news'))[0];
+    }
+
+
+
 
     $single_news = array(
         'thumb' => get_post_thumb($id),
         'title' => get_the_title($id),
         'content' => get_post_field('post_content', $id),
         'slug' => get_post_field('post_name', $id),
+        'prev' => $prev_post->ID,
+        'next' => $next_post->ID,
     );
 
     echo json_encode(array(
