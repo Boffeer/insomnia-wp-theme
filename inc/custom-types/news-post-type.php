@@ -107,12 +107,15 @@ function get_modal_news() {
 
 
     $single_news = array(
+        'id' => $id,
         'thumb' => get_post_thumb($id),
         'title' => get_the_title($id),
         'content' => get_post_field('post_content', $id),
         'slug' => get_post_field('post_name', $id),
         'prev' => $prev_post->ID,
         'next' => $next_post->ID,
+        'prev_url' => get_the_permalink($prev_post->ID),
+        'next_url' => get_the_permalink($next_post->ID),
     );
 
     echo json_encode(array(
