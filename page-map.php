@@ -28,9 +28,11 @@
                         <h3 class="screenser__header-column-title">Координаты</h3>
                         <div class="screenser__header-column-content wysiwyg">
                             <p>
+                                <strong>
                                 <a href="#">
                                     <?php echo $coordinates; ?>
                                 </a>
+                                </strong>
                             </p>
                         </div>
                     </div>

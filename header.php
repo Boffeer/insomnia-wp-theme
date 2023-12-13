@@ -84,11 +84,9 @@
         </div>
     </header>
 
-    <?php
-        $barba_animation = 'clip';
-        if (is_single()) : if (get_post_type(get_the_ID())) : ?>
-<!--            --><?php //$barba_animation = 'no'; ?>
-        <?php endif; ?> <?php endif; ?>
+    <?php $barba_animation = 'clip'; ?>
+    <?php if (is_single()) : if (get_post_type(get_the_ID()) === 'news') : ?>
+        <?php $barba_animation = 'news'; ?>
+    <?php endif; ?> <?php endif; ?>
 
-    ?>
     <main class="main" data-barba="container" data-barba-namespace="<?php echo $barba_animation; ?>">

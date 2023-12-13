@@ -12,7 +12,8 @@ if (!empty($news['icon'])) {
 global $wp_query;
 $card_modifier = '';
 
-if ($wp_query->post->ID === get_the_ID()) {
+if (is_single() && $wp_query->post->ID === get_the_ID()) {
+//    get_vd($wp_query);
     $card_modifier = 'active';
 }
 
