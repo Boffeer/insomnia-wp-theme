@@ -67,7 +67,9 @@
 
                                     ?>
                                     <a href="<?php echo $button_link;?>" <?php echo $button['file'] ? 'download' : ''; ?> class="single-article__button">
-                                        <img class="single-article__button-icon" src="<?php echo $button_icon; ?>" alt="<?php echo $button['text']; ?>">
+                                        <span class="single-article__button-wrap">
+                                            <img class="single-article__button-icon" src="<?php echo $button_icon; ?>" alt="<?php echo $button['text']; ?>">
+                                        </span>
                                         <span class="single-article__button-text"><?php echo $button['text']; ?></span>
                                     </a>
                                 <?php endforeach; ?>

@@ -84,7 +84,7 @@ if (is_singular('news')) {
     $prev_post = '';
 }
 ?>
-<article class="modal-news b_modal b_modal--scrollable" data-closer-type="inner" id="modal-news">
+<article class="modal-news b_modal" data-closer-type="inner" id="modal-news">
     <div class="modal-news__media <?php echo empty($modal_thumb) ? 'is-hidden' : ''; ?>">
         <picture class="modal-news__media-pic">
             <img class="modal-news__media-img" src="<?php echo $modal_thumb; ?>" alt="<?php echo $modal_title; ?>">
@@ -112,7 +112,7 @@ if (is_singular('news')) {
     </div>
 </article>
 
-<article class="modal-trainer b_modal b_modal--scrollable" data-closer-type="inner" id="modal-trainer">
+<article class="modal-trainer b_modal" data-closer-type="inner" id="modal-trainer">
 
     <div class="modal-trainer__media">
         <picture class="modal-trainer__media-pic">

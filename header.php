@@ -43,7 +43,9 @@
                         <?php foreach ($menu as $menu_item) : ?>
                             <li class="menu__nav-item">
                                 <a href="<?php echo $menu_item['href']; ?>" class="menu__nav-link">
-                                    <?php echo $menu_item['title']; ?>
+                                    <span class="menu__nav-text">
+                                        <?php echo $menu_item['title']; ?>
+                                    </span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -65,17 +67,7 @@
                   rel="noopener noreferrer"
                   aria-label="Забронировть сейчас"
             >
-                  <svg class="round-button__text" viewbox="0 0 100 100">
-                      <path  d="M 10,50
-                      a 30,30 0 1,1 80,0
-                      a 30,30 0 1,1 -80,0"
-                      id="curve"/>
-                      <text x="1" fill="currentColor">
-                          <textpath xlink:href="#curve" spacing="exact">
-                              Забронировать &nbsp; сейчас
-                          </textpath>
-                      </text>
-                  </svg>
+                <span class="round-button__text"></span>
                   <svg class="round-button__icon">
                       <use href="<?php echo THEME_STATIC; ?>/img/common.insm/lock.svg#lock"></use>
                   </svg>

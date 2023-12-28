@@ -66,8 +66,8 @@
             <div class="screener__particles-upper">
             </div>
             <div class="screener__particles-bottom">
-                <div class="blob js_use-bg" data-use-bg="./img/news.insm/blob-1.svg"></div>
-                <div class="blob js_use-bg" data-use-bg="./img/news.insm/blob-2.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/news.insm/blob-1.svg"></div>
+                <div class="blob js_use-bg" data-use-bg="<?php echo THEME_STATIC; ?>/img/news.insm/blob-2.svg"></div>
             </div>
         </div>
     </section>
