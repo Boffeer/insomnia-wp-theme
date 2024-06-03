@@ -39,7 +39,9 @@ endif;
 
 if ( !function_exists('get_any_page_title') ) :
 	function get_any_page_title() {
-		if (is_home()) { // Проверяем, является ли текущая страница домашней страницей
+        if (get_field('seo_title', get_the_ID())) {
+            $title = get_field('seo_title', get_the_ID()); // Получаем заголовок сайта
+        } elseif (is_home()) { // Проверяем, является ли текущая страница домашней страницей
 	        $title = get_bloginfo('name'); // Получаем заголовок сайта
 	    } elseif (is_search()) { // Проверяем, является ли текущая страница страницей поиска
 	        $title = sprintf(__('Поиск: %s', 'textdomain'), get_search_query()); // Получаем заголовок страницы поиска
@@ -85,7 +87,9 @@ endif;
 
 if ( !function_exists('get_any_page_desc') ) :
 	function get_any_page_desc() {
-		if (is_home()) { // Проверяем, является ли текущая страница домашней страницей
+    if (get_field('seo_description', get_the_ID())) {
+        $description = get_field('seo_description', get_the_ID()); // Получаем заголовок сайта
+    } elseif (is_home()) { // Проверяем, является ли текущая страница домашней страницей
         $description = get_bloginfo('description'); // Получаем описание сайта
     } elseif (is_category() || is_tag() || is_tax()) { // Проверяем, является ли текущая страница страницей категории, метки или таксономии
         $term = get_queried_object(); // Получаем объект текущей категории, метки или таксономии
