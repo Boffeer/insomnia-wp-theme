@@ -38,7 +38,7 @@
                     <div class="single-article__body">
                         <?php $about_subtitle = get_field('menu_subtitle'); ?>
                         <?php if (!empty($about_subtitle)) : ?>
-                            <h2 class="single-article__title single-article__title--big"><?php echo typograph($about_subtitle); ?></h2>
+                            <h2 class="single-article__title"><?php echo typograph($about_subtitle); ?></h2>
                         <?php endif; ?>
                         <div class="single-article__content wysiwyg">
                             <?php the_content(); ?>
