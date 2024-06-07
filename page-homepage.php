@@ -50,7 +50,11 @@ get_header();
                 ?>
                 <ul class="hero__bullet-list">
                     <?php foreach ($news as $article) : ?>
-                        <li class="hero__bullet">
+                        <? $icon = get_image_url_by_id(get_field('news_icon', $article->ID)); ?>
+                            <li class="hero__bullet <?php echo $icon ? 'hero__bullet--custom-icon' : ''?>">
+                            <? if ($icon) : ?>
+                                <img class="hero__bullet-icon" src="<?php echo $icon; ?>" alt="<?php echo $article->post_title; ?>"/>
+                            <? endif; ?>
                             <a href="<?php echo the_permalink($article->ID)?>"
                                class="hero__bullet-link"
                                data-id="<?php echo $article->ID; ?>"

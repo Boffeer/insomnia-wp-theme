@@ -21,7 +21,7 @@ get_header();
         <section class="news screener__layout" id="news">
             <div class="screener__content screener__container">
                 <div class="screener__header">
-                    <h1 class="screener__title">События</h1>
+                    <h1 class="screener__title">Афиша</h1>
                 </div>
                 <div class="screener__body">
                     <div class="accordion-carousel">
