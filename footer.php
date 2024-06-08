@@ -54,7 +54,15 @@
 
 
 <?php
+$isModalPage = false;
 if (is_singular('news')) {
+    $slug = 'news';
+    $isModalPage = true;
+} else if (is_singular('services')) {
+    $slug = 'services';
+    $isModalPage = true;
+}
+if ($isModalPage) {
     $modal_title = get_the_title();
     $modal_content = get_the_content();
     $modal_thumb = get_post_thumb(get_the_ID());
@@ -65,14 +73,14 @@ if (is_singular('news')) {
 
     // Если пост первый, устанавливаем предыдущий пост как последний
     if (empty($prev_post)) {
-        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => 'news'))[0]->ID;
+        $prev_post = get_posts(array('numberposts' => 1, 'order' => 'DESC', 'post_type' => $slug))[0]->ID;
     } else {
         $prev_post = $prev_post->ID;
     }
 
     // Если пост последний, устанавливаем следующий пост как первый
     if (empty($next_post)) {
-        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => 'news'))[0]->ID;
+        $next_post = get_posts(array('numberposts' => 1, 'order' => 'ASC', 'post_type' => $slug))[0]->ID;
     } else {
         $next_post = $next_post->ID;
     }

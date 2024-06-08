@@ -119,6 +119,7 @@ require get_template_directory() . '/inc/merlin/merlin-functions.php';
 //require THEME_INC . '/custom-types/reviews-post-type.php';
 require THEME_INC . '/custom-types/news-post-type.php';
 require THEME_INC . '/custom-types/events-post-type.php';
+require THEME_INC . '/custom-types/services-post-type.php';
 
 /*
 	Pages meta

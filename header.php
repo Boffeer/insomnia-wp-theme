@@ -77,8 +77,12 @@
     </header>
 
     <?php $barba_animation = 'clip'; ?>
-    <?php if (is_single()) : if (get_post_type(get_the_ID()) === 'news') : ?>
-        <?php $barba_animation = 'news'; ?>
-    <?php endif; ?> <?php endif; ?>
+    <?php if (is_single()) :
+        if (get_post_type(get_the_ID()) === 'news') : ?>
+            <?php $barba_animation = 'news'; ?>
+        <? elseif (get_post_type(get_the_ID()) === 'services') : ?>
+            <?php $barba_animation = 'services'; ?>
+        <?php endif; ?>
+    <?php endif; ?>
 
     <main class="main" data-barba="container" data-barba-namespace="<?php echo $barba_animation; ?>">

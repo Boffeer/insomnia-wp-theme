@@ -17,14 +17,18 @@
                                     <?php foreach ($about_gallery as $slide) : ?>
                                         <?php $slide = get_image_url_by_id($slide); ?>
                                         <div class="swiper-slide single-article-carousel__slide">
-                                            <div class="single-article-carousel__media">
+                                            <a href="<?php echo $slide; ?>"
+                                               data-fancybox="gallery"
+                                               data-barba-prevent="self"
+                                               target="_blank"
+                                               class="single-article-carousel__media">
                                                 <picture class="single-article-carousel__media-pic">
                                                     <img class="single-article-carousel__media-img"
                                                          src="<?php echo $slide; ?>"
                                                          alt=""
                                                     >
                                                 </picture>
-                                            </div>
+                                            </a>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>

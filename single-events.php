@@ -31,14 +31,20 @@ if (!empty($event['icon'])) {
                         <div class="swiper single-article-carousel__swiper">
                             <div class="swiper-wrapper">
                                 <?php foreach ($event['gallery'] as $slide) : ?>
-                                <div class="swiper-slide single-article-carousel__slide">
+                                <a class="swiper-slide single-article-carousel__slide"
+                                   href="<?php echo get_image_url_by_id($slide); ?>"
+                                   data-fancybox="gallery"
+                                   data-barba-prevent="self"
+                                   target="_blank"
+                                >
+
                                     <div class="single-article-carousel__media">
                                         <picture class="single-article-carousel__media-pic">
                                             <img class="single-article-carousel__media-img"
                                                  src="<?php echo get_image_url_by_id($slide); ?>" alt="<?php the_title(); ?>">
                                         </picture>
                                     </div>
-                                </div>
+                                </a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
